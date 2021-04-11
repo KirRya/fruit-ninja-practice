@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    public GameObject foodObject;
-
+    [Header("Prefab config")]
+    public GameObject prefab;
     public float interval;
-
     public Sprite[] sprites;
+    private float progress;
+    public float lifetime;
 
-
+    [Header("Movement config")]
     public Vector2 startPosition;
     public Vector2 endPosition;
     public float step;
-    private float progress;
+    
 
 
 
@@ -23,7 +24,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         transform.position = startPosition;
         InvokeRepeating("Spawn", interval, interval);
-
+        
     }
 
     // Update is called once per frame
@@ -34,13 +35,19 @@ public class ObjectSpawner : MonoBehaviour
 
     private void Spawn()
     {
-        GameObject food = Instantiate(foodObject);
+        //Basic movement
+        GameObject unit = Instantiate(prefab);
 
         transform.position = Vector2.Lerp(startPosition, endPosition, progress);
         progress += step;
 
+        //Sprite generating
         Sprite randomFoodSprite = sprites[Random.Range(0, sprites.Length)];
-        food.GetComponent<SpriteRenderer>().sprite = randomFoodSprite;
+        unit.GetComponent<SpriteRenderer>().sprite = randomFoodSprite;
 
+        //Despawning per lifetime
+        Destroy(unit, lifetime);
     }
+
+
 }
