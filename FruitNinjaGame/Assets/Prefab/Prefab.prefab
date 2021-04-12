@@ -94,6 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0caf10802e5fa4c8c3204560dac9e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {x: -5, y: -5}
-  endPosition: {x: 8, y: 7}
+  startPosition: {x: 0, y: -5}
+  endPosition: {x: 0, y: 5}
   step: 0.003

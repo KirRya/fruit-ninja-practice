@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 165554813}
   - component: {fileID: 165554812}
   - component: {fileID: 165554811}
+  - component: {fileID: 165554814}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -369,6 +370,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &165554814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165554810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93bcb63621b0e8844ae7f459b9b51fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startHeight: 0
+  endHeight: 0
+  startWidth: 0
+  endWidth: 0
 --- !u!1 &422958464
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,8 +429,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9664a0f4829b154419b9de95c018e25b, type: 3}
   - {fileID: 21300000, guid: bd71a9e0e2ba6db4488edbfbf467d3da, type: 3}
   lifetime: 1.5
-  startPosition: {x: -3, y: 3}
-  endPosition: {x: 4, y: 4}
+  startPosition: {x: 10, y: 10}
+  endPosition: {x: 5, y: 5}
   step: 0.0005
 --- !u!4 &422958466
 Transform:
