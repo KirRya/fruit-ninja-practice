@@ -39,6 +39,9 @@ public class ParabolicMovement : MonoBehaviour
             transform.position = transform.position + (Vector3)Acceleration * Time.deltaTime;
             Acceleration += Vector2.down * g * Time.deltaTime;
 
+        float rotationSpeed = Random.Range(0, 5);
+        transform.Rotate(Vector3.back, rotationSpeed);
+
             if(transform.position.x >= DefineScreenBorder.endWidth || 
                transform.position.x <= DefineScreenBorder.startWidth ||
                transform.position.y >= DefineScreenBorder.endHeight ||
