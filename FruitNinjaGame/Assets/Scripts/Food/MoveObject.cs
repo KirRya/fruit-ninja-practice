@@ -12,10 +12,8 @@ public class MoveObject : MonoBehaviour
 
 
     void Start()
-    {
+    {      
         transform.position = startPosition;
-        
-        
     }
 
 

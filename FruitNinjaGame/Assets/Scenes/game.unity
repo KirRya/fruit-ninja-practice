@@ -432,6 +432,7 @@ MonoBehaviour:
   startPosition: {x: 10, y: 10}
   endPosition: {x: 5, y: 5}
   step: 0.0005
+  mainCamera: {fileID: 165554812}
 --- !u!4 &422958466
 Transform:
   m_ObjectHideFlags: 0

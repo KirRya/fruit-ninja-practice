@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+//Useless now, but can't delete
 public class ScreenBorder
 {
     private const float negativeNumber = -1f;
