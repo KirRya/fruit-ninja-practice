@@ -8,33 +8,26 @@ public class ObjectSpawner : MonoBehaviour
     public GameObject prefab;
     public float interval;
     public Sprite[] sprites;
-    private float progress;
-    public float lifetime;
-
-    [Header("Movement config")]
-    public Vector2 startPosition;
-    public Vector2 endPosition;
-    public float step;
 
     private ScreenBorder border;
     public Camera mainCamera;
 
+    [Header("Spawn config")]
+    private float spawnInterval = 2;
+    private int amountUnits = 1;
 
-    // Start is called before the first frame update
     void Start()
     {
-        //Изменяю это
-        //transform.position = startPosition;
-
         transform.position = new Vector2(
             Random.Range(DefineScreenBorder.startWidth, DefineScreenBorder.endWidth),
             DefineScreenBorder.startHeight);
 
-        InvokeRepeating("Spawn", interval, interval);
+        //InvokeRepeating("Spawn", interval, interval);
+
+        InvokeRepeating("SpawnUnitsPack", spawnInterval, spawnInterval);
         
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -49,22 +42,22 @@ public class ObjectSpawner : MonoBehaviour
         //Sprite generating
         Sprite randomFoodSprite = sprites[Random.Range(0, sprites.Length)];
         unit.GetComponent<SpriteRenderer>().sprite = randomFoodSprite;
-
-        //Despawning per lifetime
-        //Изменяю
-        //Destroy(unit, lifetime);
-
-        //InvokeRepeating("CheckForDestroy(unit)", interval, interval);
-
     }
 
-    //public void checkForDestroy(GameObject _unit)
-    //{
-    //    if (true)
-    //        Destroy(_unit);
-    //    if (endPosition.x >= new Vector2(border.endWidth, border.endHeight).x || endPosition.y >= new Vector2(border.endWidth, border.endHeight).y)
-    //        Destroy(_unit);
-    //}
 
+    //Without delay already 
+    public void SpawnUnitsPack()
+    {
+        for (int i = 0; i < amountUnits; i++)
+        {
+            GameObject unit = Instantiate(prefab);
+            unit.name = "unit";
+
+            Sprite randomFoodSprite = sprites[Random.Range(0, sprites.Length)];
+            unit.GetComponent<SpriteRenderer>().sprite = randomFoodSprite;
+
+            BladeCut.InitiateUnit(unit);
+        }
+    }
 
 }

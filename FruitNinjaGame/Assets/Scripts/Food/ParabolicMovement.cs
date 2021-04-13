@@ -28,7 +28,7 @@ public class ParabolicMovement : MonoBehaviour
         Acceleration = (Vector2.up * Random.Range(2, DefineScreenBorder.endHeight)) + initialAcceleration;
         transform.position = startVector;
 
-        Debug.Log($"startVector - {startVector.ToString()}; Acceleration - {Acceleration.ToString()} ");
+        //Debug.Log($"startVector - {startVector.ToString()}; Acceleration - {Acceleration.ToString()} ");
     }
 
 
@@ -41,6 +41,11 @@ public class ParabolicMovement : MonoBehaviour
 
         float rotationSpeed = Random.Range(0, 5);
         transform.Rotate(Vector3.back, rotationSpeed);
+
+        const float scaleIncrease = 0.2f;
+
+        transform.localScale += new Vector3(scaleIncrease, scaleIncrease, scaleIncrease) * Time.deltaTime;
+
 
         if(transform.position.x >= DefineScreenBorder.endWidth || 
            transform.position.x <= DefineScreenBorder.startWidth ||
