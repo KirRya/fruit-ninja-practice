@@ -36,23 +36,23 @@ public class ParabolicMovement : MonoBehaviour
     void Update() {
         //Убрал проверку
 
-            transform.position = transform.position + (Vector3)Acceleration * Time.deltaTime;
-            Acceleration += Vector2.down * g * Time.deltaTime;
+        transform.position = transform.position + (Vector3)Acceleration * Time.deltaTime;
+        Acceleration += Vector2.down * g * Time.deltaTime;
 
         float rotationSpeed = Random.Range(0, 5);
         transform.Rotate(Vector3.back, rotationSpeed);
 
-            if(transform.position.x >= DefineScreenBorder.endWidth || 
-               transform.position.x <= DefineScreenBorder.startWidth ||
-               transform.position.y >= DefineScreenBorder.endHeight ||
-               transform.position.y <= DefineScreenBorder.startHeight) {
-                //Need to be destroyed;
+        if(transform.position.x >= DefineScreenBorder.endWidth || 
+           transform.position.x <= DefineScreenBorder.startWidth ||
+           transform.position.y >= DefineScreenBorder.endHeight ||
+           transform.position.y <= DefineScreenBorder.startHeight) {
+            //Need to be destroyed;
 
-                //Временное решение, могу удалять только если на поле находится один фрукт
-                //GameObject unit = GameObject.Find("unit");
-                //Destroy(unit);
-                
-            }
+            //Временное решение, могу удалять только если на поле находится один фрукт
+            GameObject unit = GameObject.Find("unit");
+            Destroy(unit);
+
+        }
         
 
     }
