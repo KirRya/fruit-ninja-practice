@@ -5,10 +5,13 @@ using UnityEngine;
 public class ObjectSpawner : MonoBehaviour
 {
     [Header("Prefab config")]
+    [SerializeField]
     public GameObject prefab;
-    public Sprite[] sprites;
+    [SerializeField]
+    private Sprite[] sprites;
 
-    public Camera mainCamera;
+    [SerializeField]
+    private Camera mainCamera;
 
     [Header("Spawn config")]
     private float spawnInterval = 2;

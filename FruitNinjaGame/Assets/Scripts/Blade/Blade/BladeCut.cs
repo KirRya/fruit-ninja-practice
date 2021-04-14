@@ -19,7 +19,9 @@ public class BladeCut : MonoBehaviour
 
         if (Input.GetMouseButton(0) && (cursorPosition - (Vector2)unit.transform.position).magnitude <= sliceRadious)
         {
-            Destroy(unit);
+            Stain stain = gameObject.GetComponent<Stain>();
+            stain.StainCreate(cursorPosition);
+            Destroy(unit);     
         }
     }
 
