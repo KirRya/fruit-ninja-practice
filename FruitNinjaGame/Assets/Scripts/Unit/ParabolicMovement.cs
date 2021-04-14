@@ -59,10 +59,7 @@ public class ParabolicMovement : MonoBehaviour
 
     private bool isUnitCut()
     {
-        if (transform.position.x >= DefineScreenBorder.endWidth ||
-           transform.position.x <= DefineScreenBorder.startWidth ||
-           transform.position.y >= DefineScreenBorder.endHeight ||
-           transform.position.y <= DefineScreenBorder.startHeight) {
+        if (DefineScreenBorder.gameZone.Contains(transform.position)) {
             return true;
         }
         else {

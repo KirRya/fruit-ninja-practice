@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- 
+
 public class DefineScreenBorder : MonoBehaviour
 {
     [SerializeField]
@@ -9,14 +9,14 @@ public class DefineScreenBorder : MonoBehaviour
     private float Height { get; set; }
     private float Width { get; set; }
 
-    [Header("Y")]
+
     public static float startHeight, endHeight;
-    [Header("X")]
     public static float startWidth, endWidth;
+
     private float AspectRatious { get; set; }
     private float offset = 2f;
 
-
+    public static Rect gameZone;
     void Start()
     {
         Height = mainCamera.orthographicSize * 2;
@@ -28,5 +28,7 @@ public class DefineScreenBorder : MonoBehaviour
 
         endWidth = (Width / 2) + offset;
         startWidth = endWidth * -1.0f;
+
+        gameZone = new Rect(0, 0, endWidth, endHeight);
     }
 }
