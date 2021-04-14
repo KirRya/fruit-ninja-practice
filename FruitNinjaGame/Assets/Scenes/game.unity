@@ -286,7 +286,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorTexture: {fileID: 2800000, guid: 6fdfcd4167ed5e7488584241bb671bb2, type: 3}
-  hotSpot: {x: 0, y: 0}
 --- !u!1 &165554810
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +399,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1521962744310631630, guid: eec9419fb9ca4e148b914dbaca0f89d8, type: 3}
-  interval: 2
   sprites:
   - {fileID: 21300000, guid: b6c47d17d4fce4741a185c9d76b372b1, type: 3}
   - {fileID: 21300000, guid: bcbd9f858cbc82b4ea7fae1ccc76cdf1, type: 3}
@@ -437,7 +435,6 @@ GameObject:
   m_Component:
   - component: {fileID: 907282187}
   - component: {fileID: 907282190}
-  - component: {fileID: 907282188}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -464,18 +461,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &907282188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907282186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 409fa8901622c864ba37f99f2da2967b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &907282190
 CanvasRenderer:
   m_ObjectHideFlags: 0

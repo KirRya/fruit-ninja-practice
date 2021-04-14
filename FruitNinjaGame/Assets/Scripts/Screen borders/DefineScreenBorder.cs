@@ -6,29 +6,35 @@ public class DefineScreenBorder : MonoBehaviour
 {
     [SerializeField]
     private Camera mainCamera;
-    private float Height { get; set; }
-    private float Width { get; set; }
-
-
-    public static float startHeight, endHeight;
-    public static float startWidth, endWidth;
+    private static float Height { get; set; }
+    private static float Width { get; set; }
 
     private float AspectRatious { get; set; }
-    private float offset = 2f;
+    private static float offset = 2f;
 
-    public static Rect gameZone;
     void Start()
     {
         Height = mainCamera.orthographicSize * 2;
         AspectRatious = mainCamera.aspect;
         Width = Mathf.Round(Height * AspectRatious);
-
-        endHeight = (Height / 2) + offset;
-        startHeight = endHeight * -1.0f;
-
-        endWidth = (Width / 2) + offset;
-        startWidth = endWidth * -1.0f;
-
-        gameZone = new Rect(0, 0, endWidth, endHeight);
+        GameZone.Initialize();
     }
+
+    public static class GameZone
+    {
+        public static Rect zone;
+        public static float startHeight, endHeight, startWidth, endWidth;
+
+        public static void Initialize()
+        {
+            endHeight = (Height / 2) + offset;
+            startHeight = endHeight * -1.0f;
+
+            endWidth = (Width / 2) + offset;
+            startWidth = endWidth * -1.0f;
+
+            zone = new Rect(startWidth, startHeight, endWidth * 2, endHeight * 2);
+        }
+    }
+
 }

@@ -16,7 +16,6 @@ public class BladeCut : MonoBehaviour
     void Update()
     {
         Vector2 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log($"cursor - {cursorPosition}; unit - {unit.transform.position}; minus - {(cursorPosition - (Vector2)unit.transform.position).magnitude}");
 
         if (Input.GetMouseButton(0) && (cursorPosition - (Vector2)unit.transform.position).magnitude <= sliceRadious)
         {

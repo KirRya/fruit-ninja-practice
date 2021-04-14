@@ -17,8 +17,8 @@ public class ObjectSpawner : MonoBehaviour
     void Start()
     {
         transform.position = new Vector2(
-            Random.Range(DefineScreenBorder.startWidth, DefineScreenBorder.endWidth),
-            DefineScreenBorder.startHeight);
+            Random.Range(DefineScreenBorder.GameZone.startWidth, DefineScreenBorder.GameZone.endWidth),
+            DefineScreenBorder.GameZone.startHeight);
 
         InvokeRepeating("SpawnUnitsPack", spawnInterval, spawnInterval);
         

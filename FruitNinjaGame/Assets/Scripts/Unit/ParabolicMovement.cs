@@ -13,17 +13,17 @@ public class ParabolicMovement : MonoBehaviour
     void Start()
     {
         Vector2 startVector = new Vector2(
-            Random.Range(DefineScreenBorder.startWidth, DefineScreenBorder.endWidth), 
-            DefineScreenBorder.startHeight);
+            Random.Range(DefineScreenBorder.GameZone.startWidth, DefineScreenBorder.GameZone.endWidth), 
+            DefineScreenBorder.GameZone.startHeight);
 
         Vector2 initialAcceleration = new Vector2();
 
         if (startVector.x >= 0)
-            initialAcceleration = new Vector2(Random.Range(DefineScreenBorder.startWidth, 0), DefineScreenBorder.endHeight);
+            initialAcceleration = new Vector2(Random.Range(DefineScreenBorder.GameZone.startWidth, 0), DefineScreenBorder.GameZone.endHeight);
         else
-            initialAcceleration = new Vector2(Random.Range(0, DefineScreenBorder.endWidth), DefineScreenBorder.endHeight);
+            initialAcceleration = new Vector2(Random.Range(0, DefineScreenBorder.GameZone.endWidth), DefineScreenBorder.GameZone.endHeight);
 
-        Acceleration = (Vector2.up * Random.Range(2, DefineScreenBorder.endHeight)) + initialAcceleration;
+        Acceleration = (Vector2.up * Random.Range(2, DefineScreenBorder.GameZone.endHeight)) + initialAcceleration;
         transform.position = startVector;
     }
 
@@ -34,7 +34,7 @@ public class ParabolicMovement : MonoBehaviour
         rotateUnit();
         scaleUnit();
 
-        if(isUnitCut()) {
+        if(outOfZone()) {
             GameObject unit = GameObject.Find("unit");
             Destroy(unit);
         }
@@ -57,9 +57,9 @@ public class ParabolicMovement : MonoBehaviour
         transform.localScale += new Vector3(scaleIncrease, scaleIncrease, scaleIncrease) * Time.deltaTime;
     }
 
-    private bool isUnitCut()
+    private bool outOfZone()
     {
-        if (DefineScreenBorder.gameZone.Contains(transform.position)) {
+        if (!DefineScreenBorder.GameZone.zone.Contains(transform.position)) {
             return true;
         }
         else {
