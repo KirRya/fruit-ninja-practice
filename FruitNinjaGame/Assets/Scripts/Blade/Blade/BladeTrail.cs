@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class BladeTrail : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    private Camera mainCamera;
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Vector2 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        //Debug.Log(cursorPosition);
-        //Debug.Log(Screen.height + " " + Screen.width);
+        Vector2 cursorPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButton(0))
         {

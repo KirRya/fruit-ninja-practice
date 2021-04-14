@@ -21,7 +21,6 @@ public class BladeCut : MonoBehaviour
         if (Input.GetMouseButton(0) && (cursorPosition - (Vector2)unit.transform.position).magnitude <= sliceRadious)
         {
             Destroy(unit);
-            //Debug.Log("DIE INSECT");
         }
     }
 

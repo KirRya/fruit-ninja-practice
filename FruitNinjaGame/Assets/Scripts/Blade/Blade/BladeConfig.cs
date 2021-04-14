@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class BladeConfig : MonoBehaviour
 {
-    public Texture2D cursorTexture;
+    [SerializeField]
+    private Texture2D cursorTexture;
     private CursorMode cursorMode = CursorMode.Auto;
-    public Vector2 hotSpot = Vector2.zero;
+    private Vector2 hotSpot = Vector2.zero;
 
 
     // Start is called before the first frame update

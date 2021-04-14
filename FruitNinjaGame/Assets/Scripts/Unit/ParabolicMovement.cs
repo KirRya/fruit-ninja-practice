@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class ParabolicMovement : MonoBehaviour
 {
-    private Vector2 Acceleration { get; set; }
+    private Vector3 Acceleration { get; set; }
     private float g = 9.81f;
+
+    private const float scaleIncrease = 0.2f;
+    private float rotationSpeed;
 
     void Start()
     {
-        //Vector2 startVector = new Vector2(Random.Range(-11, 11), -7);
-
-        //Acceleration = startVector;
-
         Vector2 startVector = new Vector2(
             Random.Range(DefineScreenBorder.startWidth, DefineScreenBorder.endWidth), 
             DefineScreenBorder.startHeight);
 
-        Vector2 initialAcceleration = new Vector2(); // =  new Vector2(Random.Range(DefineScreenBorder.startWidth / 2, DefineScreenBorder.endWidth / 2), DefineScreenBorder.endHeight);
-
+        Vector2 initialAcceleration = new Vector2();
 
         if (startVector.x >= 0)
             initialAcceleration = new Vector2(Random.Range(DefineScreenBorder.startWidth, 0), DefineScreenBorder.endHeight);
@@ -27,38 +25,48 @@ public class ParabolicMovement : MonoBehaviour
 
         Acceleration = (Vector2.up * Random.Range(2, DefineScreenBorder.endHeight)) + initialAcceleration;
         transform.position = startVector;
-
-        //Debug.Log($"startVector - {startVector.ToString()}; Acceleration - {Acceleration.ToString()} ");
     }
 
 
-
     void Update() {
-        //Убрал проверку
 
-        transform.position = transform.position + (Vector3)Acceleration * Time.deltaTime;
-        Acceleration += Vector2.down * g * Time.deltaTime;
+        moveUnit();
+        rotateUnit();
+        scaleUnit();
 
-        float rotationSpeed = Random.Range(0, 5);
+        if(isUnitCut()) {
+            GameObject unit = GameObject.Find("unit");
+            Destroy(unit);
+        }
+    }
+
+    private void moveUnit()
+    {
+        transform.position = transform.position + Acceleration * Time.deltaTime;
+        Acceleration += Vector3.down * g * Time.deltaTime;
+    }
+
+    private void rotateUnit()
+    {
+        rotationSpeed = Random.Range(0, 5);
         transform.Rotate(Vector3.back, rotationSpeed);
+    }
 
-        const float scaleIncrease = 0.2f;
-
+    private void scaleUnit()
+    {
         transform.localScale += new Vector3(scaleIncrease, scaleIncrease, scaleIncrease) * Time.deltaTime;
+    }
 
-
-        if(transform.position.x >= DefineScreenBorder.endWidth || 
+    private bool isUnitCut()
+    {
+        if (transform.position.x >= DefineScreenBorder.endWidth ||
            transform.position.x <= DefineScreenBorder.startWidth ||
            transform.position.y >= DefineScreenBorder.endHeight ||
            transform.position.y <= DefineScreenBorder.startHeight) {
-            //Need to be destroyed;
-
-            //Временное решение, могу удалять только если на поле находится один фрукт
-            GameObject unit = GameObject.Find("unit");
-            Destroy(unit);
-
+            return true;
         }
-        
-
+        else {
+            return false;
+        }
     }
 }

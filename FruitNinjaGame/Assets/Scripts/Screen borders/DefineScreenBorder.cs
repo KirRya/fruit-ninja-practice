@@ -4,7 +4,7 @@ using UnityEngine;
  
 public class DefineScreenBorder : MonoBehaviour
 {
-    private const float negativeNumber = -1f;
+    [SerializeField]
     private Camera mainCamera;
     private float Height { get; set; }
     private float Width { get; set; }
@@ -19,19 +19,14 @@ public class DefineScreenBorder : MonoBehaviour
 
     void Start()
     {
-        mainCamera = GetComponent<Camera>();
-        ScreenBorder border = new ScreenBorder(mainCamera);
-
         Height = mainCamera.orthographicSize * 2;
         AspectRatious = mainCamera.aspect;
         Width = Mathf.Round(Height * AspectRatious);
 
         endHeight = (Height / 2) + offset;
-        startHeight = endHeight * negativeNumber;
+        startHeight = endHeight * -1.0f;
 
         endWidth = (Width / 2) + offset;
-        startWidth = endWidth * negativeNumber;
-
-        //Debug.Log($"correct height and width {border.startHeight}:{border.endHeight}, {border.startWidth}:{border.endWidth}");
+        startWidth = endWidth * -1.0f;
     }
 }

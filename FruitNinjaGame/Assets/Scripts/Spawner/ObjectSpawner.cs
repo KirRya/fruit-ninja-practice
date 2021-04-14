@@ -6,10 +6,8 @@ public class ObjectSpawner : MonoBehaviour
 {
     [Header("Prefab config")]
     public GameObject prefab;
-    public float interval;
     public Sprite[] sprites;
 
-    private ScreenBorder border;
     public Camera mainCamera;
 
     [Header("Spawn config")]
@@ -22,8 +20,6 @@ public class ObjectSpawner : MonoBehaviour
             Random.Range(DefineScreenBorder.startWidth, DefineScreenBorder.endWidth),
             DefineScreenBorder.startHeight);
 
-        //InvokeRepeating("Spawn", interval, interval);
-
         InvokeRepeating("SpawnUnitsPack", spawnInterval, spawnInterval);
         
     }
@@ -33,19 +29,6 @@ public class ObjectSpawner : MonoBehaviour
 
     }
 
-    public void Spawn()
-    {
-        //Basic movement
-        GameObject unit = Instantiate(prefab);
-        unit.name = "unit";
-
-        //Sprite generating
-        Sprite randomFoodSprite = sprites[Random.Range(0, sprites.Length)];
-        unit.GetComponent<SpriteRenderer>().sprite = randomFoodSprite;
-    }
-
-
-    //Without delay already 
     public void SpawnUnitsPack()
     {
         for (int i = 0; i < amountUnits; i++)
