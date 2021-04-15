@@ -26,7 +26,9 @@ public class BladeCut : MonoBehaviour
             UnitHalf unitHalf = gameObject.GetComponent<UnitHalf>();
             unitHalf.UnitSlice(cursorPosition, unit);
 
-            Destroy(unit);     
+            Destroy(unit);
+
+            GameObject.Find("score").GetComponent<ScoreView>().Score += 1;
         }
     }
 

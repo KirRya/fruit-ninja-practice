@@ -35,11 +35,7 @@ public class ParabolicMovement : MonoBehaviour
 
         if(outOfZone()) {
             GameObject unit = GameObject.Find("unit");
-            Destroy(unit);
-            //HealthScript.currentHealth -= 1;
-            //HealthScript.configHearths();
-
-            
+            Destroy(unit); 
         }
     }
 

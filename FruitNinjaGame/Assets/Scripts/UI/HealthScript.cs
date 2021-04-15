@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class HealthScript : MonoBehaviour
 {
-    [SerializeField]
     public int currentHealth;
     [SerializeField]
     private int hearthsAmount;
@@ -42,19 +41,14 @@ public class HealthScript : MonoBehaviour
         }
     }
 
-    private void configHearths()
-    {
-        for (int i = 0; i < hearths.Length; i++)
-        {
+    public void configHearths() {
+        for (int i = 0; i < hearths.Length; i++) {
             configHearthsView(i);
             checkExsess(i);
-            Debug.Log("Check");
         }
     }
 
-
-    public void decreaseHealth()
-    {
+    public void decreaseHealth() {
         currentHealth -= 1;
     }
 }
