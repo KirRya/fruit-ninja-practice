@@ -14,6 +14,9 @@ public class UnitHalf : MonoBehaviour
     private Vector2 secondOffset;
 
     private float lifetime = 3.0f;
+
+    [SerializeField]
+    private GameObject effect;
     void Start()
     {
        
@@ -42,6 +45,8 @@ public class UnitHalf : MonoBehaviour
 
         firstHalf .GetComponent<SpriteRenderer>().sprite = findSprite(getSpriteName(unitSprite));
         secondHalf.GetComponent<SpriteRenderer>().sprite = findSprite(getSpriteName(unitSprite));
+
+        Instantiate(effect);
 
         StartCoroutine(destroyWithDelay(firstHalf, secondHalf));
     }
