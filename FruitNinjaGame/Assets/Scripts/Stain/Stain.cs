@@ -35,7 +35,7 @@ public class Stain : MonoBehaviour
     IEnumerator decreaseAlpha(GameObject stain)
     {
         SpriteRenderer stainSprite = stain.GetComponent<SpriteRenderer>();
-        float alpha = 0.5f;
+        float alpha = 1f;
         while(alpha > 0f)
         {
             alpha -= Time.deltaTime / slowingAlphaDecrease;

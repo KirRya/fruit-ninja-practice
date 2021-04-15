@@ -632,7 +632,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb1d79d2ae94ec046a170148379cf0ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites: []
+  sprites:
+  - {fileID: 21300000, guid: 2b397d074be25b1418e4cf71a3c7fb07, type: 3}
+  - {fileID: 21300000, guid: f19b22507707ca14aa256d22bf117082, type: 3}
+  - {fileID: 21300000, guid: 82bd257d8c325c745acb4d3a4b4d79a2, type: 3}
+  - {fileID: 21300000, guid: ef6f01a1b7f55f744bc87098ad6f1664, type: 3}
+  - {fileID: 21300000, guid: 8dd32be539b2a4c438f83db0f2d41805, type: 3}
+  - {fileID: 21300000, guid: 62cff95c704f4d244a230f212d414aa6, type: 3}
+  - {fileID: 21300000, guid: 2347619c028bdfb48b2a19a7a18bf637, type: 3}
+  - {fileID: 21300000, guid: 2f3707e79bb483648ac9d7686e82a9aa, type: 3}
+  - {fileID: 21300000, guid: d927fa268e285e044bf0e4ac7489f775, type: 3}
+  - {fileID: 21300000, guid: 4fbe28583e26be447a38454910f104ec, type: 3}
   prefab: {fileID: 1957930325814892102, guid: 022d40b717496ba4d861a4431c5846ea, type: 3}
 --- !u!1 &1553128832
 GameObject:

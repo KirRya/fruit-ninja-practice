@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class UnitHalf : MonoBehaviour
 {
@@ -39,8 +40,10 @@ public class UnitHalf : MonoBehaviour
 
         Sprite unitSprite = getUnitSprite(unit);
 
-        firstHalf .GetComponent<SpriteRenderer>().sprite.name = setSprite(unitSprite);
-        secondHalf.GetComponent<SpriteRenderer>().sprite.name = setSprite(unitSprite);
+        firstHalf .GetComponent<SpriteRenderer>().sprite = findSprite(getSpriteName(unitSprite));
+        secondHalf.GetComponent<SpriteRenderer>().sprite = findSprite(getSpriteName(unitSprite));
+
+        StartCoroutine(destroyWithDelay(firstHalf, secondHalf));
     }
 
     private Sprite getUnitSprite(GameObject unit)
@@ -48,12 +51,12 @@ public class UnitHalf : MonoBehaviour
         return unit.GetComponent<SpriteRenderer>().sprite;
     }
 
-    private string setSprite(Sprite unitSprite)
+    private string getSpriteName(Sprite unitSprite)
     {
         return unitSprite.name + "Arm";
     }
 
-    private Sprite findSprite(Sprite unitSprite, string spriteName)
+    private Sprite findSprite(string spriteName)
     {
         foreach(Sprite item in sprites)
         {
@@ -61,5 +64,12 @@ public class UnitHalf : MonoBehaviour
                 return item;
         }
         return null;
+    }
+
+    IEnumerator destroyWithDelay(GameObject halfOne, GameObject halfTwo)
+    {
+        yield return new WaitForSeconds(lifetime);
+        Destroy(halfOne);
+        Destroy(halfTwo);
     }
 }
