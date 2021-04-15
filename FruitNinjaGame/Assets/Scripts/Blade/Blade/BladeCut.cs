@@ -7,6 +7,7 @@ public class BladeCut : MonoBehaviour
 {
     private static GameObject unit;
     private float sliceRadious = 1.0f;
+    private Vector2 cursorPosition;
 
     void Start()
     {
@@ -15,12 +16,16 @@ public class BladeCut : MonoBehaviour
 
     void Update()
     {
-        Vector2 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButton(0) && (cursorPosition - (Vector2)unit.transform.position).magnitude <= sliceRadious)
         {
             Stain stain = gameObject.GetComponent<Stain>();
             stain.StainCreate(cursorPosition);
+
+            UnitHalf unitHalf = gameObject.GetComponent<UnitHalf>();
+            unitHalf.UnitSlice(cursorPosition, unit);
+
             Destroy(unit);     
         }
     }

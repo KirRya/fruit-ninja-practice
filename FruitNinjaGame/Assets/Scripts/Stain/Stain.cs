@@ -45,9 +45,4 @@ public class Stain : MonoBehaviour
         }   
     }
 
-    //public Color getStainColor(GameObject unit)
-    //{
-    //    SpriteRenderer unitSprite = unit.GetComponent<SpriteRenderer>();
-    //    return new Color(unitSprite.color.r, unitSprite.color.g, unitSprite.color.b);
-    //}
 }
