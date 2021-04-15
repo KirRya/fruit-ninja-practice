@@ -46,6 +46,7 @@ public class UnitHalf : MonoBehaviour
         firstHalf .GetComponent<SpriteRenderer>().sprite = findSprite(getSpriteName(unitSprite));
         secondHalf.GetComponent<SpriteRenderer>().sprite = findSprite(getSpriteName(unitSprite));
 
+        effect.transform.position = startPosition;
         Instantiate(effect);
 
         StartCoroutine(destroyWithDelay(firstHalf, secondHalf));
