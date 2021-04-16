@@ -35,7 +35,10 @@ public class ParabolicMovement : MonoBehaviour
 
         if(outOfZone()) {
             GameObject unit = GameObject.Find("unit");
-            Destroy(unit); 
+            Destroy(unit);
+
+            HearthsSystem hearths = GameObject.Find("GameController").GetComponent<HearthsSystem>();
+            hearths.decreaseHearth();
         }
     }
 

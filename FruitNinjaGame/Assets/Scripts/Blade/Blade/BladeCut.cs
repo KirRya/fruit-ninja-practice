@@ -17,6 +17,9 @@ public class BladeCut : MonoBehaviour
     [SerializeField]
     public UnitHalf unitHalf;
 
+    [SerializeField]
+    public HearthsSystem hearthsSystem;
+
     void Update()
     {
         cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
