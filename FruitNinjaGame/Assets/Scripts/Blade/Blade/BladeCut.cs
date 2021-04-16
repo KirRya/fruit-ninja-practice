@@ -12,6 +12,11 @@ public class BladeCut : MonoBehaviour
     [SerializeField]
     public ScoreView scoreView;
 
+    private int sliceCount;
+
+    [SerializeField]
+    public UnitHalf unitHalf;
+
     void Update()
     {
         cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -21,8 +26,8 @@ public class BladeCut : MonoBehaviour
             Stain stain = gameObject.GetComponent<Stain>();
             stain.StainCreate(cursorPosition);
 
-            UnitHalf unitHalf = gameObject.GetComponent<UnitHalf>();
-            unitHalf.UnitSlice(cursorPosition, unit);
+            sliceCount = Random.Range(2, 6);
+            unitHalf.sliceCreate(sliceCount, cursorPosition, unit);
 
             Destroy(unit);
 

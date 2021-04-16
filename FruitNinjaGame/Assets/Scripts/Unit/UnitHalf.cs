@@ -18,29 +18,26 @@ public class UnitHalf : MonoBehaviour
     [SerializeField]
     private GameObject effect;
 
-    public void UnitSlice(Vector2 startPosition, GameObject unit)
+    private Vector2 offset;
+
+    public void sliceCreate(int countSlices, Vector2 startPosition, GameObject unit)
     {
-        GameObject firstHalf  = Instantiate(prefab);
-        GameObject secondHalf = Instantiate(prefab);
+        for (int i = 0; i < countSlices; i++)
+        {
+            GameObject slice = Instantiate(prefab);
+            offset = new Vector2(Random.Range(-1, 1), Random.Range(-1, 1));
 
-        firstHalf. name = "firstHalf";
-        secondHalf.name = "secondHalf";
+            slice.transform.position = startPosition + offset;
 
-        firstOffset  = new Vector2(Random.Range(-1, 1), 0);
-        secondOffset = new Vector2(0, Random.Range(-1, 1));
+            Sprite sliceSprite = getUnitSprite(unit);
 
-        firstHalf. transform.position = startPosition + firstOffset;
-        secondHalf.transform.position = startPosition + secondOffset;
+            slice.GetComponent<SpriteRenderer>().sprite = findSprite(getSpriteName(sliceSprite));
 
-        Sprite unitSprite = getUnitSprite(unit);
-
-        firstHalf .GetComponent<SpriteRenderer>().sprite = findSprite(getSpriteName(unitSprite));
-        secondHalf.GetComponent<SpriteRenderer>().sprite = findSprite(getSpriteName(unitSprite));
+            StartCoroutine(delayDestroy(slice));
+        }
 
         effect.transform.position = startPosition;
         Instantiate(effect);
-
-        StartCoroutine(destroyWithDelay(firstHalf, secondHalf));
     }
 
     private Sprite getUnitSprite(GameObject unit)
@@ -63,10 +60,9 @@ public class UnitHalf : MonoBehaviour
         return null;
     }
 
-    IEnumerator destroyWithDelay(GameObject halfOne, GameObject halfTwo)
+    IEnumerator delayDestroy(GameObject slice)
     {
         yield return new WaitForSeconds(lifetime);
-        Destroy(halfOne);
-        Destroy(halfTwo);
+        Destroy(slice);
     }
 }
