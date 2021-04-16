@@ -47,7 +47,7 @@ public class UnitHalf : MonoBehaviour
 
     private string getSpriteName(Sprite unitSprite)
     {
-        return unitSprite.name + "Arm";
+        return unitSprite.name + "Slice";
     }
 
     private Sprite findSprite(string spriteName)
