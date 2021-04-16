@@ -6,10 +6,6 @@ public class BladeTrail : MonoBehaviour
 {
     [SerializeField]
     private Camera mainCamera;
-    void Start()
-    {
-
-    }
 
     void Update()
     {

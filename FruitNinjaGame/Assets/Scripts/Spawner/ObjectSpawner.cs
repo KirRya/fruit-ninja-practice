@@ -27,11 +27,6 @@ public class ObjectSpawner : MonoBehaviour
         
     }
 
-    void Update()
-    {
-
-    }
-
     public void SpawnUnitsPack()
     {
         for (int i = 0; i < amountUnits; i++)

@@ -9,10 +9,8 @@ public class BladeCut : MonoBehaviour
     private float sliceRadious = 1.0f;
     private Vector2 cursorPosition;
 
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    public ScoreView scoreView;
 
     void Update()
     {
@@ -28,10 +26,9 @@ public class BladeCut : MonoBehaviour
 
             Destroy(unit);
 
-            GameObject.Find("score").GetComponent<ScoreView>().Score += 1;
+            scoreView.increaseScore();
         }
     }
-
 
     public static void InitiateUnit(GameObject _unit)
     {

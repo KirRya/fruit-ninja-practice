@@ -17,15 +17,6 @@ public class UnitHalf : MonoBehaviour
 
     [SerializeField]
     private GameObject effect;
-    void Start()
-    {
-       
-    }
-
-    void Update()
-    {
-        
-    }
 
     public void UnitSlice(Vector2 startPosition, GameObject unit)
     {

@@ -58,11 +58,6 @@ public class ParabolicMovement : MonoBehaviour
 
     private bool outOfZone()
     {
-        if (!DefineScreenBorder.GameZone.zone.Contains(transform.position)) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return !DefineScreenBorder.GameZone.zone.Contains(transform.position);
     }
 }

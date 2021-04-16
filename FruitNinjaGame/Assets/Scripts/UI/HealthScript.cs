@@ -18,11 +18,6 @@ public class HealthScript : MonoBehaviour
         configHearths();
     }
 
-    void Update()
-    {
-
-    }
-
     private void configHearthsView(int iterator) {
         if(iterator < currentHealth) {
             hearths[iterator].sprite = fullHearth;
