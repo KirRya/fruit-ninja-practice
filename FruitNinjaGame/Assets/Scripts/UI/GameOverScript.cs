@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Text;
+using System.Collections;
 
 public class GameOverScript : MonoBehaviour
 {
@@ -15,17 +13,28 @@ public class GameOverScript : MonoBehaviour
     [SerializeField]
     public Text gameScoreText;
 
+
+    private float scaleIncrease = 25f;
+
     public void Setup() {
         gameObject.SetActive(true);
         currScore.text = gameScoreText.text.Split(' ')[1];
     }
 
     public void RestartButton() {
-        SceneManager.LoadScene("Game");
-        ParabolicMovement.isGameInProgress = true;
+        StartCoroutine(restartWithDelay());
+        
     }
 
     public void MainMenuButton() {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    IEnumerator restartWithDelay()
+    {
+        yield return new WaitForSeconds(1.2f);
+
+        SceneManager.LoadScene("Game");
+        ParabolicMovement.isGameInProgress = true;
     }
 }

@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - LosePopup
   - 
   - 
   - 
@@ -40,4 +40,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Popup
+    uniqueID: 1496386849
     locked: 0
