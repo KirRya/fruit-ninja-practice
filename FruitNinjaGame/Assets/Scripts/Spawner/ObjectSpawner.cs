@@ -17,6 +17,9 @@ public class ObjectSpawner : MonoBehaviour
     private float spawnInterval = 3;
     private int amountUnits = 1;
 
+    [SerializeField]
+    public GameOverScript gameOverScript;
+
     void Start()
     {
         transform.position = new Vector2(
@@ -32,6 +35,8 @@ public class ObjectSpawner : MonoBehaviour
         if(!ParabolicMovement.isGameInProgress)
         {
             CancelInvoke();
+
+            GameOver();
         }
 
         for (int i = 0; i < amountUnits; i++)
@@ -44,6 +49,11 @@ public class ObjectSpawner : MonoBehaviour
 
             BladeCut.InitiateUnit(unit);
         }
+    }
+
+    public void GameOver()
+    {
+        gameOverScript.Setup(999);
     }
 
 }

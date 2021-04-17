@@ -15,6 +15,8 @@ public class ParabolicMovement : MonoBehaviour
 
     void Start()
     {
+        isGameInProgress = true;
+
         Vector2 startVector = new Vector2(
             Random.Range(DefineScreenBorder.GameZone.startWidth, DefineScreenBorder.GameZone.endWidth), 
             DefineScreenBorder.GameZone.startHeight);
