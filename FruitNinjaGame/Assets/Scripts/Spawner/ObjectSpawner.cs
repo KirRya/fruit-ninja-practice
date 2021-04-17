@@ -38,22 +38,24 @@ public class ObjectSpawner : MonoBehaviour
 
             GameOver();
         }
-
-        for (int i = 0; i < amountUnits; i++)
+        else
         {
-            GameObject unit = Instantiate(prefab);
-            unit.name = "unit";
+            for (int i = 0; i < amountUnits; i++)
+            {
+                GameObject unit = Instantiate(prefab);
+                unit.name = "unit";
 
-            Sprite randomFoodSprite = sprites[Random.Range(0, sprites.Length)];
-            unit.GetComponent<SpriteRenderer>().sprite = randomFoodSprite;
+                Sprite randomFoodSprite = sprites[Random.Range(0, sprites.Length)];
+                unit.GetComponent<SpriteRenderer>().sprite = randomFoodSprite;
 
-            BladeCut.InitiateUnit(unit);
-        }
+                BladeCut.InitiateUnit(unit);
+            }
+        }   
     }
 
     public void GameOver()
     {
-        gameOverScript.Setup(999);
+        gameOverScript.Setup();
     }
 
 }

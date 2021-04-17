@@ -39,25 +39,28 @@ public class BladeCut : MonoBehaviour
     {
         cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if ((Input.GetMouseButton(0) && (cursorPosition - (Vector2)unit.transform.position).magnitude <= sliceRadious) &&
-            (cursorPosition - lastCursorPosition).magnitude > speedCursorLimit)
+        if (unit != null)
         {
-            Stain stain = gameObject.GetComponent<Stain>();
-            stain.StainCreate(cursorPosition);
+            if ((Input.GetMouseButton(0) && (cursorPosition - (Vector2)unit.transform.position).magnitude <= sliceRadious) &&
+                (cursorPosition - lastCursorPosition).magnitude > speedCursorLimit)
+            {
+                Stain stain = gameObject.GetComponent<Stain>();
+                stain.StainCreate(cursorPosition);
 
-            sliceCount = Random.Range(2, 6);
-            unitHalf.sliceCreate(sliceCount, cursorPosition, unit);
+                sliceCount = Random.Range(2, 6);
+                unitHalf.sliceCreate(sliceCount, cursorPosition, unit);
 
-            Destroy(unit);
+                Destroy(unit);
 
-            scoreView.increaseScore();
+                scoreView.increaseScore();
 
-            offsetScorePopup = new Vector2(Random.Range(-1, 2), Random.Range(-1, 2));
-            scorePopup.showScorePopup(cursorPosition + offsetScorePopup);
+                offsetScorePopup = new Vector2(Random.Range(-1, 2), Random.Range(-1, 2));
+                scorePopup.showScorePopup(cursorPosition + offsetScorePopup);
 
-            GameObject scorePopupObject = GameObject.Find("prefabScorePopup(Clone)");
-            
-            StartCoroutine(destroyScoreDelay(scorePopupObject));
+                GameObject scorePopupObject = GameObject.Find("prefabScorePopup(Clone)");
+
+                StartCoroutine(destroyScoreDelay(scorePopupObject));
+            }
         }
 
         lastCursorPosition = cursorPosition;
