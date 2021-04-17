@@ -20,11 +20,21 @@ public class BladeCut : MonoBehaviour
     [SerializeField]
     public HearthsSystem hearthsSystem;
 
+    private Vector2 lastCursorPosition;
+
+
+    private float speedCursorLimit = 0.3f;
+    void Start()
+    {
+        lastCursorPosition = Vector2.zero;
+    }
+
     void Update()
     {
         cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (Input.GetMouseButton(0) && (cursorPosition - (Vector2)unit.transform.position).magnitude <= sliceRadious)
+        if ((Input.GetMouseButton(0) && (cursorPosition - (Vector2)unit.transform.position).magnitude <= sliceRadious) &&
+            (cursorPosition - lastCursorPosition).magnitude > speedCursorLimit)
         {
             Stain stain = gameObject.GetComponent<Stain>();
             stain.StainCreate(cursorPosition);
@@ -36,6 +46,8 @@ public class BladeCut : MonoBehaviour
 
             scoreView.increaseScore();
         }
+
+        lastCursorPosition = cursorPosition;
     }
 
     public static void InitiateUnit(GameObject _unit)
