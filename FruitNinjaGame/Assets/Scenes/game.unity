@@ -2079,6 +2079,11 @@ MonoBehaviour:
   currScore: {fileID: 664843945}
   maxScore: {fileID: 867659943}
   gameScoreText: {fileID: 974287606}
+  screen: {fileID: 1702728474}
+  heartImage: {fileID: 1045627907}
+  heartSprites:
+  - {fileID: 21300000, guid: dcf476595a98d674992fd03c6a417a8b, type: 3}
+  - {fileID: 21300000, guid: ac0c38265af4a3a45ad89f67424472c1, type: 3}
 --- !u!1 &2096505299
 GameObject:
   m_ObjectHideFlags: 0
