@@ -23,7 +23,13 @@ public class BladeCut : MonoBehaviour
     private Vector2 lastCursorPosition;
 
 
-    private float speedCursorLimit = 0.3f;
+    private float speedCursorLimit = 0.1f;
+
+    [SerializeField]
+    public ScorePopup scorePopup;
+    private Vector2 offsetScorePopup;
+    private float scoreLifetime = 1.5f;
+
     void Start()
     {
         lastCursorPosition = Vector2.zero;
@@ -45,6 +51,13 @@ public class BladeCut : MonoBehaviour
             Destroy(unit);
 
             scoreView.increaseScore();
+
+            offsetScorePopup = new Vector2(Random.Range(-1, 2), Random.Range(-1, 2));
+            scorePopup.showScorePopup(cursorPosition + offsetScorePopup);
+
+            GameObject scorePopupObject = GameObject.Find("prefabScorePopup(Clone)");
+            
+            StartCoroutine(destroyScoreDelay(scorePopupObject));
         }
 
         lastCursorPosition = cursorPosition;
@@ -55,5 +68,9 @@ public class BladeCut : MonoBehaviour
         unit = _unit;
     }
 
-
+    IEnumerator destroyScoreDelay(GameObject _scorePopup)
+    {
+        yield return new WaitForSeconds(scoreLifetime);
+        Destroy(_scorePopup);
+    }
 }

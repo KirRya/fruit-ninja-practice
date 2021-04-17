@@ -14,7 +14,7 @@ public class ObjectSpawner : MonoBehaviour
     private Camera mainCamera;
 
     [Header("Spawn config")]
-    private float spawnInterval = 2;
+    private float spawnInterval = 3;
     private int amountUnits = 1;
 
     void Start()
@@ -24,7 +24,6 @@ public class ObjectSpawner : MonoBehaviour
             DefineScreenBorder.GameZone.startHeight);
 
         InvokeRepeating("SpawnUnitsPack", spawnInterval, spawnInterval);
-        
     }
 
     public void SpawnUnitsPack()
