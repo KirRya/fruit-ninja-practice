@@ -10,6 +10,9 @@ public class ParabolicMovement : MonoBehaviour
     private const float scaleIncrease = 0.2f;
     private float rotationSpeed;
 
+    [SerializeField]
+    public static bool isGameInProgress = true;
+
     void Start()
     {
         Vector2 startVector = new Vector2(
@@ -39,6 +42,10 @@ public class ParabolicMovement : MonoBehaviour
 
             HearthsSystem hearths = GameObject.Find("GameController").GetComponent<HearthsSystem>();
             hearths.decreaseHearth();
+
+            if (hearths.isLose()) {
+                isGameInProgress = false;
+            }
         }
     }
 

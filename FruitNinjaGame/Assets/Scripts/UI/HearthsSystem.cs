@@ -29,11 +29,19 @@ public class HearthsSystem : MonoBehaviour
 
     public void decreaseHearth()
     {
-        Hearths -= 1;
+        if(Hearths != 0)
+        {
+            Hearths -= 1;
+        }
     }
 
     public void increaseHearth()
     {
         Hearths += 1;
+    }
+
+    public bool isLose()
+    {
+        return hearths <= 0;
     }
 }

@@ -23,11 +23,17 @@ public class ObjectSpawner : MonoBehaviour
             Random.Range(DefineScreenBorder.GameZone.startWidth, DefineScreenBorder.GameZone.endWidth),
             DefineScreenBorder.GameZone.startHeight);
 
+        
         InvokeRepeating("SpawnUnitsPack", spawnInterval, spawnInterval);
     }
 
     public void SpawnUnitsPack()
     {
+        if(!ParabolicMovement.isGameInProgress)
+        {
+            CancelInvoke();
+        }
+
         for (int i = 0; i < amountUnits; i++)
         {
             GameObject unit = Instantiate(prefab);
