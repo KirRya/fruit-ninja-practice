@@ -488,7 +488,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9664a0f4829b154419b9de95c018e25b, type: 3}
   - {fileID: 21300000, guid: bd71a9e0e2ba6db4488edbfbf467d3da, type: 3}
   mainCamera: {fileID: 165554812}
-  gameOverScript: {fileID: 1702728478}
 --- !u!4 &422958466
 Transform:
   m_ObjectHideFlags: 0
@@ -1451,6 +1450,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 0b96edf3c868f9e45834606008748099, type: 3}
   - {fileID: 21300000, guid: b57229c5a1f52f04a9f94a883571f338, type: 3}
+  gameOverScript: {fileID: 1702728478}
 --- !u!4 &1303838820
 Transform:
   m_ObjectHideFlags: 0
@@ -1685,6 +1685,7 @@ MonoBehaviour:
   unitHalf: {fileID: 1494185990}
   hearthsSystem: {fileID: 1494185993}
   scorePopup: {fileID: 1494185991}
+  hs: {fileID: 1494185993}
 --- !u!114 &1494185989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1769,7 +1770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hearthsCountText: {fileID: 1121950486}
-  currentHearthsConfig: 3
+  currentHearthsConfig: 1
 --- !u!1 &1553128832
 GameObject:
   m_ObjectHideFlags: 0

@@ -44,7 +44,7 @@ public class BladeCut : MonoBehaviour
 
     void Update()
     {
-        if(hs.isLose())
+        if (hs.isLose())
         {
             ParabolicMovement.isGameInProgress = false;
         }

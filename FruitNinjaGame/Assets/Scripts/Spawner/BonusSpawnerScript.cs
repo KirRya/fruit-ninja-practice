@@ -12,9 +12,6 @@ public class BonusSpawnerScript : MonoBehaviour
 
     private float spawnInterval = 12.5f;
 
-    [SerializeField]
-    public GameOverScript gameOverScript;
-
     void Start()
     {
         InvokeRepeating("Spawn", spawnInterval, spawnInterval);
@@ -25,8 +22,6 @@ public class BonusSpawnerScript : MonoBehaviour
         if (!ParabolicMovement.isGameInProgress)
         {
             CancelInvoke();
-
-            GameOver();
         }
         else
         {
@@ -52,10 +47,5 @@ public class BonusSpawnerScript : MonoBehaviour
                     }
             }
         }
-    }
-
-    public void GameOver()
-    {
-        gameOverScript.Setup();
     }
 }
