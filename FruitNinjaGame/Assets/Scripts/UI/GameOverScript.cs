@@ -26,16 +26,26 @@ public class GameOverScript : MonoBehaviour
     [SerializeField]
     private Sprite[] heartSprites;
 
+    private int currentScoreValue;
+    private int maxScoreValue;
     public void Setup() {
         
-
         gameObject.SetActive(true);
 
         heartImage.sprite = heartSprites[0];
 
         endScale = screen.transform.localScale;
         StartCoroutine(LerpScale());
+
         currScore.text = gameScoreText.text.Split(' ')[1];
+        currentScoreValue = int.Parse(currScore.text);
+        maxScoreValue = PlayerPrefs.GetInt("MaxScore", 0);
+        
+        if(currentScoreValue > maxScoreValue) {
+            PlayerPrefs.SetInt("MaxScore", currentScoreValue);
+        }
+
+        maxScore.text = PlayerPrefs.GetInt("MaxScore", 0).ToString();
     }
 
     public void RestartButton() {
@@ -50,7 +60,7 @@ public class GameOverScript : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
 
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("game");
         ParabolicMovement.isGameInProgress = true;
         heartImage.sprite = heartSprites[1];
     }
