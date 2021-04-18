@@ -35,6 +35,11 @@ public class MainMenuLogic : MonoBehaviour
         maxScore.text = PlayerPrefs.GetInt("MaxScore", 0).ToString();
     }
 
+    private void UnitMove()
+    {
+
+    }
+
     void FixedUpdate()
     {
         if (isGameOn)
@@ -48,7 +53,6 @@ public class MainMenuLogic : MonoBehaviour
         unitChangeSprite();
         isGameOn = true;
         StartCoroutine(LerpScale());
-        StartCoroutine(delayGameStart());
         ParabolicMovement.isGameInProgress = true;
     }
 
@@ -76,13 +80,4 @@ public class MainMenuLogic : MonoBehaviour
 
         unit.transform.localScale = endScale;
     }
-
-    IEnumerator delayGameStart()
-    {
-        yield return new WaitForSeconds(2.0f);
-
-        SceneManager.LoadScene("game");
-    }
-
-    
 }

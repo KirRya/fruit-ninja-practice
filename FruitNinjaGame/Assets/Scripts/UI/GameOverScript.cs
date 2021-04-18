@@ -53,7 +53,7 @@ public class GameOverScript : MonoBehaviour
     }
 
     public void MainMenuButton() {
-        SceneManager.LoadScene("MainMenu");
+        StartCoroutine(mainMenuDelay());
     }
 
     IEnumerator restartWithDelay()
@@ -65,6 +65,12 @@ public class GameOverScript : MonoBehaviour
         heartImage.sprite = heartSprites[1];
     }
 
+    IEnumerator mainMenuDelay()
+    {
+        yield return new WaitForSeconds(1.2f);
+
+        SceneManager.LoadScene("MainMenu");
+    }
 
     IEnumerator LerpScale()
     {
