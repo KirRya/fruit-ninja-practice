@@ -34,6 +34,9 @@ public class BladeCut : MonoBehaviour
     private static GameObject bombBonus;
     private static GameObject hearthBonus;
 
+    [SerializeField]
+    private HearthsSystem hs;
+
     void Start()
     {
         lastCursorPosition = Vector2.zero;
@@ -41,60 +44,70 @@ public class BladeCut : MonoBehaviour
 
     void Update()
     {
+        if(hs.isLose())
+        {
+            ParabolicMovement.isGameInProgress = false;
+        }
+
         cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (unit != null)
-        {
-            CutUnit();
-        }
-        
-        if(bombBonus != null)
-        {
-            CutBomb();
-        }
+        CutUnit();       
+        CutBomb();
+        CutHearth();
 
         lastCursorPosition = cursorPosition;
     }
 
     private void CutUnit()
     {
-        if ((Input.GetMouseButton(0) && (cursorPosition - (Vector2)unit.transform.position).magnitude <= sliceRadious) &&
-                (cursorPosition - lastCursorPosition).magnitude > speedCursorLimit)
+        if (unit != null)
         {
-            Stain stain = gameObject.GetComponent<Stain>();
-            stain.StainCreate(cursorPosition);
+            if ((Input.GetMouseButton(0) && (cursorPosition - (Vector2)unit.transform.position).magnitude <= sliceRadious) &&
+                (cursorPosition - lastCursorPosition).magnitude > speedCursorLimit)
+            {
+                Stain stain = gameObject.GetComponent<Stain>();
+                stain.StainCreate(cursorPosition);
 
-            sliceCount = Random.Range(2, 6);
-            unitHalf.sliceCreate(sliceCount, cursorPosition, unit);
+                sliceCount = Random.Range(2, 6);
+                unitHalf.sliceCreate(sliceCount, cursorPosition, unit);
 
-            Destroy(unit);
+                Destroy(unit);
 
-            scoreView.increaseScore();
+                scoreView.increaseScore();
 
-            offsetScorePopup = new Vector2(Random.Range(-1, 2), Random.Range(-1, 2));
-            scorePopup.showScorePopup(cursorPosition + offsetScorePopup);
+                offsetScorePopup = new Vector2(Random.Range(-1, 2), Random.Range(-1, 2));
+                scorePopup.showScorePopup(cursorPosition + offsetScorePopup);
 
-            GameObject scorePopupObject = GameObject.Find("prefabScorePopup(Clone)");
+                GameObject scorePopupObject = GameObject.Find("prefabScorePopup(Clone)");
 
-            StartCoroutine(destroyScoreDelay(scorePopupObject));
+                StartCoroutine(destroyScoreDelay(scorePopupObject));
+            }
         }
     }
 
     private void CutBomb()
     {
-        if ((Input.GetMouseButton(0) && (cursorPosition - (Vector2)bombBonus.transform.position).magnitude <= sliceRadious) &&
-                (cursorPosition - lastCursorPosition).magnitude > speedCursorLimit)
+        if (bombBonus != null)
         {
-            Destroy(bombBonus);
+            if ((Input.GetMouseButton(0) && (cursorPosition - (Vector2)bombBonus.transform.position).magnitude <= sliceRadious) &&
+                (cursorPosition - lastCursorPosition).magnitude > speedCursorLimit)
+            {
+                Destroy(bombBonus);
+                hs.decreaseHearth();
+            }
         }
     }
 
     private void CutHearth()
     {
-        if ((Input.GetMouseButton(0) && (cursorPosition - (Vector2)hearthBonus.transform.position).magnitude <= sliceRadious) &&
-                (cursorPosition - lastCursorPosition).magnitude > speedCursorLimit)
+        if (hearthBonus != null)
         {
-            Destroy(hearthBonus);
+            if ((Input.GetMouseButton(0) && (cursorPosition - (Vector2)hearthBonus.transform.position).magnitude <= sliceRadious) &&
+                (cursorPosition - lastCursorPosition).magnitude > speedCursorLimit)
+            {
+                Destroy(hearthBonus);
+                hs.increaseHearth();
+            }
         }
     }
 

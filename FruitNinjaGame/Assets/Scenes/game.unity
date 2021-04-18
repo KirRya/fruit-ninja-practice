@@ -1418,6 +1418,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122339966}
   m_CullTransparentMesh: 0
+--- !u!1 &1303838818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1303838820}
+  - component: {fileID: 1303838819}
+  m_Layer: 0
+  m_Name: BonusSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1303838819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303838818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a48272920b4bf341b7e551b21c4facb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1964758907622767652, guid: 4922898f37e5bfc42b4b79cc1b8b7f77, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: 0b96edf3c868f9e45834606008748099, type: 3}
+  - {fileID: 21300000, guid: b57229c5a1f52f04a9f94a883571f338, type: 3}
+--- !u!4 &1303838820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303838818}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0044516, y: 0.3178972, z: -1771.6216}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1354058133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,7 +1769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hearthsCountText: {fileID: 1121950486}
-  currentHearthsConfig: 1
+  currentHearthsConfig: 3
 --- !u!1 &1553128832
 GameObject:
   m_ObjectHideFlags: 0

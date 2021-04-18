@@ -10,39 +10,52 @@ public class BonusSpawnerScript : MonoBehaviour
     [SerializeField]
     private Sprite[] sprites;
 
-    private float spawnInterval = 3f;
+    private float spawnInterval = 12.5f;
+
+    [SerializeField]
+    public GameOverScript gameOverScript;
+
     void Start()
     {
         InvokeRepeating("Spawn", spawnInterval, spawnInterval);
     }
 
-    void Update()
-    {
-        
-    }
-
     public void Spawn()
     {
-        GameObject bonus = Instantiate(prefab);
-        
-        switch(Random.Range(0, 2))
+        if (!ParabolicMovement.isGameInProgress)
         {
-            case 0:
-                {
-                    bonus.name = "bomb";
-                    bonus.GetComponent<SpriteRenderer>().sprite = sprites[0];
+            CancelInvoke();
 
-                    BladeCut.InitBonus(bonus, 0);
-                    break;
-                }
-            case 1:
-                {
-                    bonus.name = "hearth";
-                    bonus.GetComponent<SpriteRenderer>().sprite = sprites[1];
+            GameOver();
+        }
+        else
+        {
+            GameObject bonus = Instantiate(prefab);
 
-                    BladeCut.InitBonus(bonus, 1);
-                    break;
-                }
-        }   
+            switch (Random.Range(0, 2))
+            {
+                case 0:
+                    {
+                        bonus.name = "bomb";
+                        bonus.GetComponent<SpriteRenderer>().sprite = sprites[0];
+
+                        BladeCut.InitBonus(bonus, 0);
+                        break;
+                    }
+                case 1:
+                    {
+                        bonus.name = "hearth";
+                        bonus.GetComponent<SpriteRenderer>().sprite = sprites[1];
+
+                        BladeCut.InitBonus(bonus, 1);
+                        break;
+                    }
+            }
+        }
+    }
+
+    public void GameOver()
+    {
+        gameOverScript.Setup();
     }
 }
