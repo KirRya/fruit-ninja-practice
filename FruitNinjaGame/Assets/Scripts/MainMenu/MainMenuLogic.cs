@@ -35,11 +35,6 @@ public class MainMenuLogic : MonoBehaviour
         maxScore.text = PlayerPrefs.GetInt("MaxScore", 0).ToString();
     }
 
-    private void UnitMove()
-    {
-
-    }
-
     void FixedUpdate()
     {
         if (isGameOn)

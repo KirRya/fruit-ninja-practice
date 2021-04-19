@@ -13,6 +13,7 @@ public class ParabolicMovement : MonoBehaviour
     [SerializeField]
     public static bool isGameInProgress = true;
 
+
     void Start()
     {
         isGameInProgress = true;
